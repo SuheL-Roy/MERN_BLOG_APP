@@ -3,7 +3,7 @@ import React from 'react';
 
 const App = () => {
     return(
-        <h1> welcome ti react app</h1>
+        <h1> welcome Blog app</h1>
 
     );
 }
