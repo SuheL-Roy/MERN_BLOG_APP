@@ -1,0 +1,91 @@
+
+.settings {
+    display: flex;
+}
+
+.settingwrapper {
+    flex: 9;
+    padding: 20px;
+}
+
+.settingsTitle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.settingsUpadateTitle {
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: lightcoral;
+
+}
+
+.settingsDeleteTitle {
+    color: red;
+    font-size: 15px;
+
+}
+
+.settignsFroms {
+    display: flex;
+    flex-direction: column;
+
+} 
+
+.settinfPP {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.settinfPP > img {
+    width: 70px;
+    height: 70px;
+    border-radius: 20px;
+    object-fit: cover;
+
+}
+
+.settingsPICon {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: lightcoral;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    cursor: pointer;
+
+}
+
+.settignsFroms > label {
+    font-size: 20px;
+    margin-top: 20px;
+
+}
+
+.settignsFroms > input {
+    color: gray;
+    margin: 10px 0;
+    height: 30px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid lightgray;
+
+}
+
+.settingsSubmit {
+    width: 150px;
+    align-self: center;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    background-color: teal;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    cursor: pointer;
+
+}

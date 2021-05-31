@@ -7,7 +7,8 @@
     top: 0;
     display: flex;
     align-items: center;
-    font-family: 'Josenfin Sans', sans-serif;
+    font-family: "Josefin Sans", sans-serif;
+    z-index: 999;
 }
 
 .topLeft,.topRight {
@@ -39,6 +40,9 @@
     font-weight: 300;
     cursor: pointer;
     
+}
+.topListItem:hover {
+    color: gray;
 }
 .topSearchIcon {
     font-size: 18px;
