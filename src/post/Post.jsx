@@ -1,34 +1,25 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./post.css";
-export default function Post() {
+export default function Post({ post }) {
   return (
     <div className="post">
-      <img
-       className="postImg"
-        src="https://picsum.photos/700/400"
-        alt="postImg"
-      />
+      {post.photo && <img className="postImg" src={post.photo} alt="postImg" />}
       <div className="postinfo">
         <div className="postCata">
-          <span className="postCats">Music</span>
-          <span className="postCats">Life</span>
+          {post.catagories.map((c) => (
+            <span className="postCats">{c.name}</span>
+          ))}
         </div>
-        <span className="postTitle">
-          Lorem ipsum dolor sit amet
-        </span>
+        <Link to={`/post/${post._id}`} className="Link">
+        <span className="postTitle">{post.title}</span>
+        </Link>
         <hr />
-        <span className="postDate">1 hour ago</span>
+        <span className="postDate">
+          {new Date(post.createdAt).toDateString()}
+        </span>
       </div>
-      <p className="postDesc">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda
-        officia architecto deserunt deleniti? Labore ipsum aspernatur magnam
-        fugiat, reprehenderit praesentium blanditiis quos cupiditate ratione
-        atque, exercitationem quibusdam, reiciendis odio laboriosam?
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda
-        officia architecto deserunt deleniti? Labore ipsum aspernatur magnam
-        fugiat, reprehenderit praesentium blanditiis quos cupiditate ratione
-        atque, exercitationem quibusdam, reiciendis odio laboriosam?
-      </p>
+      <p className="postDesc">{post.desc}</p>
     </div>
   );
 }

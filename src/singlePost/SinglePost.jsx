@@ -1,16 +1,35 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router";
 import "./singlePost.css";
 
 export default function SinglePost() {
+  const location = useLocation();
+  const path = location.pathname.split("/")[2];
+  // console.log(path);
+  const [post,setpost] = useState({});
+  useEffect(() => {
+    const getPost = async () => {
+      const res = await axios.get("/posts/" + path);
+      setpost(res.data)
+       console.log(res);
+    }
+    getPost();
+
+  },[path]);
   return (
     <div className="singlePost">
       <div className="SinglePostWrapper">
-        <img
-          className="singlepostImg"
-          src="https://images.pexels.com/photos/6685428/pexels-photo-6685428.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-          alt="postImg"
-        />
-        <h1 className="singlePostTitle">Lorem ipsum dolor, sit amet
+        {
+           post.photo && ( 
+          <img
+            className="singlepostImg"
+            src={post.photo}
+            alt="postImg"
+          />
+           )}
+        <h1 className="singlePostTitle">
+           {post.title}
         <div className="singlePostEdit">
           <i className="singlePostIcon far fa-edit"></i>
           <i className="singlePostIcon far fa-trash-alt"></i>
@@ -18,21 +37,12 @@ export default function SinglePost() {
         </h1>
         <div className="singlePostinfo">
           <span className="singlePostAuthor">
-            Author: <b>David</b>
+            Author: <b>{post.username}</b>
           </span>
-          <span className="singlePostdate">1 hour ago</span>
+          <span className="singlePostdate">{new Date(post.createdAt).toDateString()}</span>
         </div>
         <p className="singlePostDes">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero
-          autem, voluptatibus eum ipsum temporibus iste tempore quam saepe
-          voluptatem ducimus totam officia, exercitationem delectus rerum ex
-          fugit quo consequuntur quia!Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero
-          autem, voluptatibus eum ipsum temporibus iste tempore quam saepe
-          voluptatem ducimus totam officia, exercitationem delectus rerum ex
-          fugit quo consequuntur quia!Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero
-          autem, voluptatibus eum ipsum temporibus iste tempore quam saepe
-          voluptatem ducimus totam officia, exercitationem delectus rerum ex
-          fugit quo consequuntur quia!
+          {post.desc}
         </p>
       </div>
     </div>
